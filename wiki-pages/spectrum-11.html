@@ -1,0 +1,65 @@
+﻿<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spectrum 11 // TBS</title><link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@refs/heads/main/assets/images/1371_Site-favicon.ico"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="./wiki-pages.css"><link rel="stylesheet" href="./wiki-overrides.css"><link rel="stylesheet" href="../fonts.css"><link rel="stylesheet" href="../official-theme.css"></head><body><main class="entry-page"><header><a class="back-link" href="./index.html"><- ARCHIVE INDEX</a><span class="entry-code">ENTRY // SPECTRUM-11</span></header><h1>Spectrum 11</h1><p class="source-line">SOURCE MIRROR // <a href="https://thebrokenscript.wiki.gg/wiki/Spectrum_11" target="_blank" rel="noopener">official wiki -></a></p><article class="entry-copy"><p><strong>spectrum_11.jar</strong> is a secret secondary mod once found within the main mod&#39;s files prior to version 1.9 of The Broken Script, though a new version for 1.21.1 is available to download through a link at the bottom of this page, and depicts events that chronologically happen before the events of The Broken Script. It takes place in Minecraft Alpha 1.1.2_01, many aspects of Minecraft 1.21.1 being altered or removed to mirror the version, though some like the off-hand slot or sweeping attacks are still present. Unusual things will happen to the worlds made in this version, including the complete alteration of the world itself. Eventually, an entity known as Integrity will appear in the world, which will eventually bring an end to the player, banning them from the world with a &quot;Connection Lost&quot; screen.</p>
+<h2>Changes</h2>
+<p class="bullet">The game&#39;s appearance, including the menu, sounds and world generation, have been regressed to emulate the visuals of Minecraft Alpha 1.1.2.</p>
+<p class="bullet">The menu now plays a custom theme, Arrival.</p>
+<p class="bullet">Trying to play the game with Iris Shaders results in a LWJGL pop-up saying <em>&quot;Trying to cheat the system, are we? Shaders did not exist in Alpha.&quot;</em>Taken from the mod&#39;s source code (spectrum_11-neoforge-0.0+mc1.21.1-build.8.jar), decompiled with Vineflower. The strings can be found at S11NeoClientEvents.kt, line 24 to 38.</p>
+<p class="bullet">Additionally, trying to play the game with Distant Horizons will show a pop-up saying <em>&quot;Trying to cheat the system, are we? These horizons are quite close, after all.&quot;</em></p>
+<p class="bullet">Attempting to use both Iris Shaders and Distant Horizons will show the same window, with the message <em>&quot;Trying to cheat the system, are we? There were no shaders and there were no farther rendering techniques.&quot;</em></p>
+<p class="bullet">You cannot choose any other game mode other than Survival, nor can enable Cheats or change the world type through <em>normal</em> means. The difficulty is also locked to normal, even after world creation.</p>
+<p class="bullet">The player&#39;s skin is forced to be Steve. Interestingly, in the files, this skin is labeled as &quot;the first&quot;, suggesting that the Alpha player we take the role of is the first victim of Integrity.</p>
+<p class="bullet">The hunger bar is entirely absent, with food items directly healing the player.</p>
+<p class="bullet">The latter no longer stack, including Rotten Flesh.</p>
+<p class="bullet">The armor bar is displayed where the hunger bar would be.</p>
+<p class="bullet">Sprinting is removed.</p>
+<p class="bullet">Punching Sheep also removes their wool.</p>
+<p class="bullet">Copper is absent, and Raw Iron &amp; Gold have been redesigned to resemble their Ore block, similar to old Minecraft where you directly obtained the block to smelt it.</p>
+<p class="bullet">Grass and Tall Grass are entirely absent.</p>
+<h2>Events</h2>
+<p class="bullet">&quot;integrity.curious&quot; - The player&#39;s render distance is reduced down to its minimum for a short while, with an eerie noise playing— it lasts an indeterminate amount of time. It plays the moonglitch.ogg<strong>moonglitch.ogg</strong> sound.</p>
+<p class="bullet">The sound of ~4-5 stone blocks being broken (displaying Block broken in Subtitles, if they are enabled).</p>
+<p class="bullet">Chunks being raised aboveground. This is also marked by sounds akin to cave sounds.</p>
+<p class="bullet">&quot;spectrum11:chunk_remover&quot; - A chunk being erased entirely. Similarly to its The Broken Script counterpart, it is handled by an entity.</p>
+<p class="bullet">The player is displaced ~10 blocks behind their current position.</p>
+<p class="bullet">Minecraft&#39;s UI text suddenly becoming partially distorted. This becomes permanent, and will affect the menu aswell.</p>
+<p class="bullet">The player being kicked with the message &quot;You still have some time.&quot;</p>
+<p class="bullet">&quot;Here I am&quot; and &quot;Nowhere to run&quot; LWJGL alert.</p>
+<h2>Integrity Behavior</h2>
+<p class="bullet">Integrity will start to appear after a few days regardless of the player being above or underground. This is indicated by a bell resonating sound, and the version text becoming glitched when nearby.</p>
+<p class="bullet">If not stared at, it will eventually despawn on its own after .</p>
+<p class="bullet">Staring at Integrity will cause one of 4 things to happen:</p>
+<p class="bullet">The player will get kicked, with the error message <em>&quot;You still have some time.&quot;</em> (20% chance)</p>
+<p class="bullet">The player will get teleported to Integrity (20% chance)</p>
+<p class="bullet">The player gets teleported to Integrity, and 40 blocks of Bedrock will be played around Integrity&#39;s position in a 10x10 block radius. (20% chance)</p>
+<p class="bullet">Integrity will chase the player. (20% chance)</p>
+<p class="bullet">Nothing happens. (20% chance)</p>
+<p>Do note that there is still a 50% chance for Integrity to chase you when despawning.</p>
+<p class="bullet">Integrity can split in half, playing a Integrity_split.ogggrotesque sound as it does. If this sound plays, Integrity has started to become aggressive, though it is possible for it not to attack. Once it decides to attack the player, usually on the last phase of the Moon, it will speak, declaring Youwillbecomeoneofus.ogg<strong>&quot;You will become one of us&quot;</strong>. It will teleport around in its pursuit to reach the player. While this happens, a s11_Integritychaseloop.oggunique theme plays on loop.</p>
+<p class="bullet">Upon the player being killed, three LWJGL pop-ups will display before the player is banned permanently from their world. These can say &quot;Beyond imagination&quot; or &quot;Nowhere to run&quot; or &quot;One of us.&quot;</p>
+<h2>Moon Phases</h2>
+<p>Spectrum 11 alters all phases of the Moon, with the normal phases having hints of red off to their side that are barely visible.</p>
+<h2>Old Moon Phases</h2>
+<h2>New Moon Phases</h2>
+<h2>Notes</h2>
+<p class="bullet">Events that alter the world may result in patches of black lighting in hollow spots. This is merely the result of the chunk not updating, and should be fixed by placing new blocks or torches.</p>
+<p class="bullet">Please, be careful while playing with older versions of <strong>spectrum_11.jar</strong>. The latest version (1.21.1) is not (as) invasive and does not open any powershell windows or interact with your system.</p>
+<p class="bullet">This mod does NOT contain any goofy &quot;scary&quot; faces.</p>
+<p class="bullet">When creating a world, Spectrum 11（1.21.1）will generate biome that replace the original Minecraft ones. Loading Spectrum 11 and entering a previously saved world may cause terrain glitches, so caution is advised.</p>
+<p class="bullet">In the description of the video for the track &quot;Arrival&quot;, is where you can get the link for the text document that includes the mod&#39;s jar file.</p>
+<p class="bullet">The text document that includes the jar file gives some backstory on who wrote it, but it is in Russian.</p>
+<p class="bullet">You can click here for a translated version of the text document. (Thanks to IPVOID)</p>
+<p class="bullet">After installing New Spectrum 11, players will not be able to complete Minecraft through the normal process, though we are able to go to Nether. When you get to the End by using cheats and beat the Ender Dragon, you will see the End Poem text was changed to &quot;Your personal data has been compromised.&quot;（this is just there to scare you)</p>
+<p class="bullet">The original <strong>spectrum_11.jar</strong> is <strong>NOT</strong> present in files of 1.9.3 ver nor in other 1.9 versions currently. For now, you can find it in 1.8 version&#39;s files picture for the route.</p>
+<p class="bullet">If you don&#39;t have TBS 1.8, you can download it here.</p>
+<h2>Gallery</h2>
+<p>File:11title.webp|Old Menu screen File:Connection lost.png|Old &#39;Connection Lost&#39; screen File:New s11 Integrity Transparent Render.png|New s11 Integrity Transparent Render Category:Lore Category:ARG</p></article><section class="media-section"><h2>ASSOCIATED RESOURCES</h2><div class="media-grid"><figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/0004_11title.webp" alt="11title.webp"><figcaption>11title.webp</figcaption></figure>
+<audio controls preload="none" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/audio/1037_Moonglitch.ogg"></audio>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1207_OnlySurvival.png" alt="OnlySurvival.png"><figcaption>OnlySurvival.png</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1703_WeCan'tUseShaders.png" alt="WeCan&#39;tUseShaders.png"><figcaption>WeCan&#39;tUseShaders.png</figcaption></figure>
+<audio controls preload="none" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/audio/1765_Youwillbecomeoneofus.ogg"></audio>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1061_New_Spectrum11_Menu.png" alt="New_Spectrum11_Menu.png"><figcaption>New_Spectrum11_Menu.png</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1392_Spectrum11_Glitched_Version.gif" alt="Spectrum11_Glitched_Version.gif"><figcaption>Spectrum11_Glitched_Version.gif</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1393_Spectrum11_Integrity_Bedrock_Placement.png" alt="Spectrum11_Integrity_Bedrock_Placement.png"><figcaption>Spectrum11_Integrity_Bedrock_Placement.png</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1394_Spectrum11_Moon_phases.png" alt="Spectrum11_Moon_phases.png"><figcaption>Spectrum11_Moon_phases.png</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1395_Spectrum11_Raised_Terrain.png" alt="Spectrum11_Raised_Terrain.png"><figcaption>Spectrum11_Raised_Terrain.png</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1396_Spectrum11_Text_Glitch.gif" alt="Spectrum11_Text_Glitch.gif"><figcaption>Spectrum11_Text_Glitch.gif</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1397_Spectrum11_Warning_Kick.png" alt="Spectrum11_Warning_Kick.png"><figcaption>Spectrum11_Warning_Kick.png</figcaption></figure></div></section><footer><a href="./index.html"><- All entries</a> | <a href="./index.html">Archive index</a></footer></main><script src="./wiki-pages.js"></script></body></html>
