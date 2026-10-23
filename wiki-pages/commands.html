@@ -1,0 +1,198 @@
+﻿<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Commands // TBS</title><link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@refs/heads/main/assets/images/1371_Site-favicon.ico"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="./wiki-pages.css"><link rel="stylesheet" href="./wiki-overrides.css"><link rel="stylesheet" href="../fonts.css"><link rel="stylesheet" href="../official-theme.css"></head><body><main class="entry-page"><header><a class="back-link" href="./index.html"><- ARCHIVE INDEX</a><span class="entry-code">ENTRY // COMMANDS</span></header><h1>Commands</h1><p class="source-line">SOURCE MIRROR // <a href="https://thebrokenscript.wiki.gg/wiki/Commands" target="_blank" rel="noopener">official wiki -></a></p><article class="entry-copy"><p>The Broken Script contains a lot of commands, almost all of them being for administrators only.</p>
+<h2>Player commands</h2>
+<h2>/tbsc</h2>
+<p>The /tbsc command is seemingly for testing purposes, it is available to all players. It stands for <strong>TBS Client Commands</strong>. It previously was one of the ways to modify the configuration of the mod, but as of 2.0 it only has a minimal amount of commands, none of them related to the config. As the name indicates, these commands are not available on a dedicated server.</p>
+<h2>boss_end</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Section || start / end || start: plays the end cutscene of the mod, moving the camera up and showing the end credits shortly after. end: Shows the end credits directly, skipping the aforementioned cutscene. |} A test command, likely used to make sure the ending cutscene was working well before release. Source: FinalCutsceneHandler.CUTSCENE.start() / .end().</p>
+<h2>camera</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Axis || z || The axis, only z is available. |- | Amount || Number || The value to override the camera in the specified axis, in radians. |} This command rotates the camera in the specified axis by <em>Amount</em> radians. Source: CameraZAxisKt.setAngle.</p>
+<h2>figure</h2>
+<p>This command will crash the game as it tries to load a file that is not present in the release versions of TBS. If it were to work, it would open a new Java Swing panel that would animate a spritesheet located at thebrokenscript/textures/testing/infect_&amp;lt;frame&amp;gt;.png, where &amp;lt;frame&amp;gt; would be a number between 0 and 7 and updated every tick. When the animation would have finished, it would have closed itself and frozen Minecraft for 2 seconds.</p>
+<h2>moonrise</h2>
+<p>Lets you control the ambience of Fractured, even outside of the intended location.</p>
+<h2>init</h2>
+<p>Creates the internal class that handles the Moon Rise ambience (MoonRiseAmbience).</p>
+<h2>stage</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Stage || Integer (0-3) || What stage/level to set the ambience to. |} Source: Jimbo.MOONRISE.applyStage(stage).</p>
+<h2>test</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Sound || Sound asset || The sound to play. |- | Loop || Boolean || Self explanatory. |- | Volume || Number || How much to increase the base volume by, where 1 = 100%. |- | Pitch || Number || Pitch multiplier, where 1 = 100%. |- | Gain || Number || Additional volume multiplier, setting the gain from the audio engine this time. 1 = 100%. |} Although it looks like a copy of /playsound, this command uses BrokenCore&#39;s Fancy Audio API to play sounds. Source: FancyAudio.play(...).setGain(gain).</p>
+<h2>Server commands</h2>
+<h2>/tbs</h2>
+<p>The /tbs command handles all commands related to the mod&#39;s state. These commands are locked behind requiring administrator permissions, whether it&#39;d be through /op or the server console. <strong>Note</strong>: All /tbs dev subcommands require the cheats config to be enabled in BrokenCore (BCConfigs.getEnableCheats), otherwise the command will fail with &quot;Cheats are not enabled!&quot;.</p>
+<h2>reputation</h2>
+<p>This command allows you to see your reputation. As an admin, you can get another player&#39;s reputation by using /execute as &amp;lt;player&amp;gt;. <strong>Mechanism</strong> (source): checks PlayerVariables.entityReputation and displays a tier:</p>
+<p class="bullet">Rep ≤ 25 → <strong>BAD</strong> (hover text: &quot;Null is pissed and his hatred for you is at maximum. Expect hell from null. Null will now more often attack the player.&quot;)</p>
+<p class="bullet">25  75 → <strong>GOOD</strong> (hover text: &quot;Null is cool and doesn&#39;t care about you being here. Null will rarely hurt the player.&quot;)</p>
+<p><strong>Note</strong>: The tier labels (BAD / NORMAL / GOOD), hover descriptions, message prefixes (Reputation value: / Reputation:), and the trailing (hover for more information) hint are all <strong>hardcoded English strings</strong> in the source code, not loaded from the lang system. Players will always see English regardless of the resource pack. This command must be executed by a player; running it from the console returns -1.</p>
+<h2>devmode</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Code || Integer || The special code to input. |} Allows entering special codes set by the developers. Currently available codes are:</p>
+<p class="bullet">2018: Spawns 1000 Circuits at your current location, printing <strong>Have fun!</strong> in the chat/console.</p>
+<p class="bullet">544253: Spawns 1000 The Broken Ends at your current location, printing <strong>Have fun!</strong> in the chat/console.</p>
+<p>Other codes print &quot;Dev mode code is invalid!&quot;.</p>
+<h2>dev</h2>
+<p>Most of the /tbs commands are located in this subcommand. <strong>Note</strong>: All commands in this category require the cheats config to be enabled in BrokenCore.</p>
+<h2>arena</h2>
+<p>Various commands to test the Integrity boss fight, this can be used to spawn Integrity in the overworld if you want that for some reason.</p>
+<h2>start</h2>
+<p>Starts the Arena at the player&#39;s current location. Success message: <strong>Have fun...</strong></p>
+<h2>create</h2>
+<p>Creates a new Arena instance and adds the current player to the participants list. Success message: <strong>Created arena!</strong></p>
+<h2>next</h2>
+<p>Advances the Arena to the next phase (arena.nextPhase()). Fails if no Arena is active.</p>
+<h2>kill_phase_3</h2>
+<p>Kills Integrity in Phase 3 of the active Arena (arena.getPhase3().getIntegrity().kill()). Fails if no Arena is active.</p>
+<h2>destroy</h2>
+<p>Destroys the current Arena (arena.reset(); Arena.instance = null). Fails if no Arena is active.</p>
+<h2>arms</h2>
+<p>Spawns the &quot;wacky wavy inflatable gas station arms&quot; in Phase 3. Success message: <strong>Spawned wacky wavy inflatable gas station arms!</strong></p>
+<h2>boss</h2>
+<h2>animate</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Who || Entity || The entity to animate. Must be thebrokenscript:integrity_phase_1. |} Forces the Integrity entity to crawl out of the ground via IntegrityPhase1Entity.setCrawlOut(true). Error message: <strong>Must be integrity, you dumbass!</strong>. Success message: <strong>great job</strong></p>
+<h2>kit</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |} Gives the targeted players a full set of <strong>highest tier items</strong> for testing the boss fights without having to gear up manually. Items given:</p>
+<p class="bullet">Protection IV Netherite helmet / chestplate / leggings / boots</p>
+<p class="bullet">Sharpness V Netherite sword, pickaxe, axe, shovel</p>
+<p class="bullet">Power V + Punch II + Flame I + Infinity enchanted bow</p>
+<p class="bullet">Elytra (Unbreaking III + Mending)</p>
+<p class="bullet">7 stacks of cobblestone, water bucket, 64 golden apples, 64 torches, 64 arrows, 64 fireworks, 64 cooked beef</p>
+<p>Success message: <strong>Given boss kit to N players!</strong></p>
+<h2>bar</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Who || Player(s) || Whose Integrity boss bar to modify. |- | Show || Boolean || Whether to show the boss bar. |- | Value || Number (0-1) || Health value displayed on the boss bar, where 1 = 100%. Required even when hiding the bar. |} Controls the Integrity boss bar.</p>
+<h2>jim_bar</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Who || Player(s) || Whose Fractured boss bar to modify. |- | Show || Boolean || Whether to show the boss bar. |- | Value || Number (0-1) || Health value displayed on the boss bar, where 1 = 100%. Required even when hiding the bar. |- | Glow || Boolean || Whether the center of the bar glows. Required even when hiding the bar. |} Controls the Fractured boss bar with an extra glow toggle for the center animation.</p>
+<h2>chunk</h2>
+<h2>remove</h2>
+<p>Removes the entire chunk the player is standing on. Success message: <strong>Successfully cleared the chunk at (X, Z)</strong></p>
+<h2>code</h2>
+<p>Commands related to the Corrupted Command Block.</p>
+<h2>get</h2>
+<p>Returns the current code for the Corrupted Command Block (read from MapVariables.code).</p>
+<h2>reroll</h2>
+<p>Resets the code to a fresh random string of 6-12 characters (StringExt.nextString(random, length, ...)).</p>
+<h2>status</h2>
+<p>Prints whether the code has been applied (MapVariables.codeApplied).</p>
+<h2>coord</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Where || clanvoid / maze / wood / stone / day_A || Which part of the void to get the polaroid coordinate from. |} Returns the X and Z coordinate of the Polaroid in the specified location of Clan Void. The returned coordinates are chunk centers, computed as floorDiv(coord, 16) * 16 + 8.</p>
+<p class="bullet">/tbs dev coord clanvoid → Wooden floor polaroid of Clan Void</p>
+<p class="bullet">/tbs dev coord maze → Maze floor</p>
+<p class="bullet">/tbs dev coord wood → Wooden floor</p>
+<p class="bullet">/tbs dev coord stone → Stone floor</p>
+<p class="bullet">/tbs dev coord day_A → Day A dimension</p>
+<h2>entity</h2>
+<p>Circuit-related commands to inhabit and discard creatures.</p>
+<h2>inhabit</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Who || Entity || The entity to inhabit. |} Sets the CircuitInhabited flag on the targeted entity to true, allowing Circuit to possess it. The success message uses CMD_INHABIT_SUCCESS lang key.</p>
+<h2>discard</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Who || Entity || The entity to discard. |} Forcefully removes the targeted entity or entities from the world (non-player entities only). Useful for entities that are immune to the normal /kill damage type. Implemented in brokencore.</p>
+<h2>event</h2>
+<p>Various event-related commands (from brokencore).</p>
+<h2>all</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Who || Player(s) || Players to trigger all events on. |} Runs every single registered event on the targeted players. Good luck!</p>
+<h2>debug</h2>
+<h2>story_time</h2>
+<p>Prints all scripted events part of progression. Requires the <strong>Event Debug</strong> config in BrokenCore to be enabled. The scripted events include: MoonCorruptionStoryEvent, TXTStoryEvent, NullBookStoryEvent, CoordsStoryEvent.</p>
+<h2>force</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Event || Event asset || The event to execute. |} Forces the specified event to execute.</p>
+<h2>random</h2>
+<p>Triggers a random event using the same system as the event scheduler.</p>
+<h2>schedule</h2>
+<p>Prints various information regarding events, including:</p>
+<p class="bullet">How many events are registered</p>
+<p class="bullet">How many events the engine executes per in-game day</p>
+<p class="bullet">Whether events are enabled globally</p>
+<p class="bullet">Pre-scheduled upcoming events (pending slots)</p>
+<h2>reschedule</h2>
+<p>(Dev environments only) Clears all schedules and regenerates them on the next tick.</p>
+<h2>fx</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Effect || Effect name || Which effect to toggle. |- | State || off / on / toggle || Sets the current state of the effect. |} Toggle the current state of any effect, useful for disabling stuck/long effects or testing them out. Available effects (organized by lang key):</p>
+<p class="bullet">aberration — Aberration (player)</p>
+<p class="bullet">vhs — VHS (player)</p>
+<p class="bullet">moon_glitch — Moon Glitch (player)</p>
+<p class="bullet">text_glitch — Text Glitch (player, special set [value] with float 0.0-0.0)</p>
+<p class="bullet">custom_sky — Custom Sky Color (player + special set [r] [g] [b] with integer 0-255)</p>
+<p class="bullet">sky_blue — Force Sky Blue (player)</p>
+<p class="bullet">screen_dupe — Screen Duplication (player)</p>
+<p class="bullet">lucid_blocks_effect — Lucid Blocks Pixelization (player)</p>
+<p class="bullet">meta_paranoia — Meta Paranoia (player)</p>
+<p class="bullet">glitches — Glitches (player)</p>
+<p class="bullet">void_box — Stage 2 Arena Border (player)</p>
+<p class="bullet">dream — Dream Effect (player)</p>
+<p class="bullet">invert — Invert Effect (player)</p>
+<p>Each player FX subcommand has toggle / on / off options (except text_glitch which uses set [value]). Only custom_sky exposes an extra set [r] [g] [b].</p>
+<h2>give</h2>
+<h2>legacy_book</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | ID || String || The book&#39;s registration ID (looked up via BookLoader.getBook(id)). |} Gives the executing player a legacy book. <strong>Note</strong>: The ID parameter is a string, not an integer.</p>
+<h2>library_book</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | ID || Integer (1-250) || The book&#39;s page number. |- | Players || Player(s) || Recipients. |} Gives the targeted players a library book with the LIBRARY_BOOK_NUM DataComponent.</p>
+<h2>inspect</h2>
+<h2>tasks</h2>
+<h2>server</h2>
+<p>Prints the number of tasks queued on the server along with each task&#39;s class name and remaining delay tick.</p>
+<h2>jim_arena</h2>
+<h2>start</h2>
+<p>Starts the Fractured boss fight at the player&#39;s current location. Success message: <strong>Have fun...</strong></p>
+<h2>create</h2>
+<p>Creates a new JimArena and adds the current player to the participants list.</p>
+<h2>destroy</h2>
+<p>Resets and destroys the JimArena.</p>
+<h2>overlay</h2>
+<h2>funny</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |} Plays the vine_boom sound and shows the flipper.png screen overlay for 15 ticks.</p>
+<h2>show</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |- | Texture || Image asset || The texture to display. |- | Duration || Integer || How long (in ticks) to display the overlay. Minimum 1. |} Shows any texture as a full-screen overlay to the targeted players.</p>
+<h2>clear</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |} Clears all active overlays from the targeted players.</p>
+<h2>silly</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |} Shows the integatlas.png screen overlay for 15 ticks.</p>
+<h2>player</h2>
+<h2>credits</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |} Sends the TBS end credits to the targeted players (via OpenCreditsPacket).</p>
+<h2>list</h2>
+<p>Lists all currently online players, excluding Null.</p>
+<h2>rep</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |- | Amount || Integer || The amount of reputation to give. Can be negative. |} Gives the targeted players an arbitrary amount of reputation.</p>
+<h2>send</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Players to teleport. |- | Dimension || Dimension asset || The target dimension. |} Teleports the targeted players to the specified dimension.</p>
+<h2>var</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Player || Player || Which player to query. |- | Variable || Any field name of PlayerVariables || Which variable to read. |} Reads any field of PlayerVariables via Java reflection. Useful for inspecting state variables like ban status, FOV, spawn position, etc. Field names are auto-completed.</p>
+<h2>popup</h2>
+<h2>show</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Recipients. |- | Title || String || The popup&#39;s title. |- | Message || String || The popup&#39;s body. |} Shows an arbitrary popup to the targeted players (via OpenAlertPopupPacket). <strong>Please use this responsibly.</strong></p>
+<h2>reputation</h2>
+<h2>add</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Amount || Integer || How much reputation to add. |} Behaves the same as /tbs dev player rep @s &amp;lt;Amount&amp;gt;. Must be executed by a player.</p>
+<h2>set</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Type || moon_phase / null / spawn || What core variable to modify. |- | Value || Depends on Type || Self explanatory. |} Modifies some core variables:</p>
+<p class="bullet">moon_phase → MapVariables.moonStage (integer 0-2)</p>
+<p class="bullet">null → null joined (flags Null as joined, broadcasts the join chat message and sound) or null gone (flags Null as gone)</p>
+<p class="bullet">spawn → sets the player&#39;s spawnPos to the block they are standing on</p>
+<h2>structure</h2>
+<h2>set</h2>
+<h2>null_id</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Pos || Coordinates || Position of a null_structure block. |- | ID || String || The structure ID (e.g. aftermath / watching / wrong_tree / blackout / fate). |} Sets the structureId of the NullStructureBlockEntity at the given position. Fails with &quot;Not a Null Structure Block. Maybe try setting the coords right?&quot; if the block at Pos is not a null_structure.</p>
+<h2>summon</h2>
+<h2>fake_player</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | User || String || The username to impersonate. |} Spawns a Circuit (Deceiver) next to the player with the specified user&#39;s skin. The user&#39;s UUID is resolved via UserAPI.lookupUuid(user); the selected player and custom name are set 10 ticks later.</p>
+<h2>time</h2>
+<h2>set</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Time || DAY / MIDNIGHT / NIGHT / NOON || Preset time of day. |} Sets the real time of day via TimeOfDay.set(level), similar to vanilla&#39;s /time set.</p>
+<h2>fake</h2>
+<h2>set</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Time || Integer (0-24000) || Time in ticks. 6000 = NOON, 18000 = MIDNIGHT. |} Sets a more precise fake time.</p>
+<h2>fake [time]</h2>
+<p>Sets the fake time using a TimeOfDay enum value.</p>
+<h2>fake off</h2>
+<p>Disables the fake time, reverting to the real time.</p>
+<h2>update_capes</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Players || Player(s) || Targeted players. |} Force-refreshes the capes of the targeted players. Success message: <strong>Forced cape update for N players!</strong></p>
+<h2>world</h2>
+<h2>carve</h2>
+<p>Starts a ChunkCarver at the player&#39;s current chunk to dig a hole, filling the empty space with Barrier blocks. Success message: <strong>Carving hole at Z...</strong></p>
+<h2>corrupt</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Where || Coordinates || The center of the corruption. |- | Radius || Integer || The circular radius of the corruption. |} Corrupts a circular region of the world around <em>Where</em> with the given <em>Radius</em> (via TerrainCorrupter.corruptTerrain). Success message: <strong>Successfully corrupted terrain!</strong></p>
+<h2>resetSeed</h2>
+<p>Resets the world generator&#39;s internal seed (via SeedSwapper.swapSeed). Unrelated to the World seed.</p>
+<h2>var</h2>
+<p>{| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Name || String || Variable name. |} Reads any field of MapVariables via Kotlin reflection.</p>
+<h2>gametime</h2>
+<p>(Dev environments only) {| class=&quot;wikitable&quot; ! Name !! Values/Type !! Description |- | Tick || Integer || The new server game time. |} Directly sets the server&#39;s game time.</p></article><section class="media-section"><h2>ASSOCIATED RESOURCES</h2><div class="media-grid"><figure><img loading="lazy" src="https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@main/assets/images/1657_VersionSlightOutdated.png" alt="VersionSlightOutdated.png"><figcaption>VersionSlightOutdated.png</figcaption></figure></div></section><footer><a href="./index.html"><- All entries</a> | <a href="./index.html">Archive index</a></footer></main><script src="./wiki-pages.js"></script></body></html>
