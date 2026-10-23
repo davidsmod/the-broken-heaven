@@ -1,5 +1,6 @@
 /* Animated VHS / CRT layer for the wiki interface. */
-body{overflow-x:hidden}
+body{overflow-x:hidden;cursor:url('https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@31eb56b6de7c7d7639b0c89b57b1d7aa6d6fd8e0/assets/images/0713_Hetzer2-0.gif'),auto}
+a,button,input,select,summary,[role="button"]{cursor:url('https://cdn.jsdelivr.net/gh/davidsmod/the-broken-wiki@31eb56b6de7c7d7639b0c89b57b1d7aa6d6fd8e0/assets/images/0713_Hetzer2-0.gif'),pointer}
 body::before{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.12;background:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0,rgba(255,255,255,.08) 1px,transparent 1px,transparent 4px);animation:tbs-scanlines 8s linear infinite}
 body::after{content:"";position:fixed;inset:0;z-index:49;pointer-events:none;background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.38) 100%);animation:tbs-flicker 5s steps(2,end) infinite}
 .home-logo{width:112px;height:112px;filter:drop-shadow(0 2px 3px #000) drop-shadow(0 0 12px rgba(210,71,71,.24));animation:tbs-logo-float 4.5s ease-in-out infinite,tbs-logo-flicker 7s steps(2,end) infinite;transform-origin:center}
