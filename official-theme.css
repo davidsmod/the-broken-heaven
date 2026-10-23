@@ -1,6 +1,8 @@
 /* Official-inspired palette: the source wiki uses a near-black canvas, light text and neutral grey links. */
 :root{--forum-bg:#050505;--forum-panel:#111;--forum-border:#3b3b3b;--forum-blue:#ededed;--forum-link:#a6a6a6;--forum-red:#9d2525;--forum-muted:#a0a0a0}
-body{background:radial-gradient(circle at 50% 0,#242424 0,#0b0b0b 420px,#050505 100%);color:#ededed}
+body{background:radial-gradient(circle at 50% 0,#242424 0,#0b0b0b 420px,#050505 100%);color:#ededed;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.12;background:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0,rgba(255,255,255,.08) 1px,transparent 1px,transparent 4px);animation:tbs-scanlines 8s linear infinite}
+body::after{content:"";position:fixed;inset:0;z-index:49;pointer-events:none;background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.38) 100%);animation:tbs-flicker 5s steps(2,end) infinite}
 a{color:var(--forum-link)}
 .terminal-shell,.wiki-index,.entry-page{background:#0d0d0d;border-color:#3b3b3b;box-shadow:0 3px 16px #000}
 .terminal-bar,.wiki-index:before,.entry-page:before{background:linear-gradient(#303030,#171717);border-color:#494949}
@@ -31,7 +33,19 @@ a{color:var(--forum-link)}
 /* Minecraftia is reserved for interface labels/headings; article prose remains comfortable to read. */
 h1,h2,h3,.wiki-index h1,.entry-page h1,.entry-copy h2,.media-section h2,.tab,.terminal-bar,.database-launch,.home-metrics b,.home-directory h2,.entry-card b,.wiki-section-card strong,.category-filter,.settings-toggle,.settings-menu button,.settings-menu select{font-family:var(--font-minecraftia);font-weight:400;letter-spacing:0}
 .glitch-logo{font-family:var(--font-minecraftia);font-weight:400;-webkit-font-smoothing:none;font-smooth:never;text-rendering:geometricPrecision;font-synthesis:none}
-.home-logo{display:block;width:72px;height:72px;margin:0 0 8px;object-fit:contain;object-position:left center;image-rendering:pixelated;filter:drop-shadow(0 2px 3px #000)}
-.index-heading{display:flex;align-items:center;gap:14px}.index-heading .home-logo{margin:0;width:78px;height:78px}.entry-card[hidden]{display:none!important}
-@media(max-width:600px){h1{font-size:24px}.wiki-index h1,.entry-page h1{font-size:27px}}
+.home-logo{display:block;width:112px;height:112px;margin:0 0 8px;object-fit:contain;object-position:left center;image-rendering:pixelated;filter:drop-shadow(0 2px 3px #000) drop-shadow(0 0 12px rgba(210,71,71,.24));animation:tbs-logo-float 4.5s ease-in-out infinite,tbs-logo-flicker 7s steps(2,end) infinite;transform-origin:center}
+.index-heading{display:flex;align-items:center;gap:20px}.index-heading .home-logo{margin:0;width:112px;height:112px}.entry-card[hidden]{display:none!important}
+.wiki-index,.entry-page{position:relative;isolation:isolate;animation:tbs-panel-in .55s ease both}
+.wiki-index::after,.entry-page::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.18;background:linear-gradient(90deg,transparent 0 48%,rgba(210,71,71,.18) 50%,transparent 52%);background-size:240% 100%;animation:tbs-signal 11s linear infinite}
+.entry-card,.wiki-section-card,.category-filter,.tab,.quick-card,.data-table a,.content-list a,.community-grid a{transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease;will-change:transform}
+.entry-card:hover,.wiki-section-card:hover,.quick-card:hover,.data-table a:hover,.content-list a:hover,.community-grid a:hover{transform:translateY(-3px)}
+.category-filter:hover,.tab:hover{transform:translateY(-1px)}
+@keyframes tbs-scanlines{from{transform:translateY(-8px)}to{transform:translateY(8px)}}
+@keyframes tbs-flicker{0%,19%,21%,63%,65%,100%{opacity:1}20%,64%{opacity:.92}}
+@keyframes tbs-logo-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes tbs-logo-flicker{0%,92%,100%{filter:drop-shadow(0 2px 3px #000) drop-shadow(0 0 12px rgba(210,71,71,.24))}93%{filter:drop-shadow(3px 0 0 rgba(210,71,71,.6)) drop-shadow(-3px 0 0 rgba(120,160,255,.35))}}
+@keyframes tbs-panel-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tbs-signal{0%{background-position:140% 0}100%{background-position:-140% 0}}
+@media (prefers-reduced-motion:reduce){body::before,body::after,.home-logo,.wiki-index,.entry-page,.wiki-index::after,.entry-page::after{animation:none}.entry-card,.wiki-section-card,.category-filter,.tab,.quick-card,.data-table a,.content-list a,.community-grid a{transition:none}}
+@media(max-width:600px){h1{font-size:24px}.wiki-index h1,.entry-page h1{font-size:27px}.index-heading{gap:12px}.index-heading .home-logo{width:92px;height:92px}}
 .result-count{margin:6px 0 12px;color:#aaa;font-size:11px}
