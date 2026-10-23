@@ -1,0 +1,37 @@
+/* Official-inspired palette: the source wiki uses a near-black canvas, light text and neutral grey links. */
+:root{--forum-bg:#050505;--forum-panel:#111;--forum-border:#3b3b3b;--forum-blue:#ededed;--forum-link:#a6a6a6;--forum-red:#9d2525;--forum-muted:#a0a0a0}
+body{background:radial-gradient(circle at 50% 0,#242424 0,#0b0b0b 420px,#050505 100%);color:#ededed}
+a{color:var(--forum-link)}
+.terminal-shell,.wiki-index,.entry-page{background:#0d0d0d;border-color:#3b3b3b;box-shadow:0 3px 16px #000}
+.terminal-bar,.wiki-index:before,.entry-page:before{background:linear-gradient(#303030,#171717);border-color:#494949}
+.terminal-nav{background:linear-gradient(90deg,#101010,#181818);border-color:#3b3b3b}
+.terminal-main{background:#0d0d0d}
+.tab,.quick-card,.data-table a,.content-list a,.community-grid a,.entry-card,.database-launch{background:linear-gradient(#202020,#111);border-color:#484848;color:#ededed}
+.tab:hover,.tab.active{background:linear-gradient(#555,#2d2d2d);border-color:#777;color:#fff;box-shadow:inset 0 0 0 1px #888}
+.tab b,.panel-id,.entry-code,.muted,.entry-card i,.home-metrics small,.home-directory small{color:#9a9a9a}
+.brand-block strong,.window-title,h1,h2,h3,.wiki-index h1,.entry-page h1{color:#ededed}
+.brand-block,.nav-footer,.entry-page header,.media-section,.entry-page footer{border-color:#3b3b3b}
+.user-line,.section-lead,.lead,.terminal-copy,.entry-copy{color:#d2d2d2}
+.command-line,.source-line{color:#bdbdbd;background:#171717;border-color:#464646}
+.prompt,.cursor,.red,.overline,h1 em,.wiki-index h1 em,.entry-page h1 em,.entry-copy strong,.entry-copy b,.data-table a b,.content-list b,.community-grid b{color:#d24747}
+.panel-heading{background:linear-gradient(#303030,#1a1a1a);border-color:#4d4d4d;border-bottom-color:#9d2525}
+.intro-grid,.home-directory,.home-metrics article,.technical-warning,.warning{background:#151515;border-color:#444;color:#d6d6d6}
+.warning{border-left-color:#9d2525}.technical-warning{border-color:#704242}.technical-warning strong{color:#e06b6b}
+.quick-card span,.quick-card small,.data-table a span,.content-list span,.community-grid span{color:#b8b8b8}
+.name-grid a{color:#ddd;background:#1b1b1b;border-color:#4b4b4b}.name-grid a:hover{color:#fff;background:#4b2020}
+.database-launch{background:linear-gradient(#5b2929,#291212);border-color:#713737}.database-launch small{color:#e3caca}
+.terminal-footer{background:#161616;border-color:#3b3b3b;color:#aaa}.terminal-footer button,.settings-toggle,.settings-menu button,.settings-menu select{color:#eee;background:#202020;border-color:#555}
+.settings-menu{background:#141414;border-color:#555;box-shadow:0 3px 12px #000}.settings-menu select{color:#eee}
+.wiki-index input{background:#151515;border-color:#555;color:#eee}.wiki-index input:focus{border-color:#aaa;box-shadow:0 0 0 2px #555}
+.entry-card:hover,.quick-card:hover,.data-table a:hover,.content-list a:hover,.community-grid a:hover{background:#252525;border-color:#999;box-shadow:0 2px 8px #000}
+.entry-copy h2,.media-section h2{color:#eee;background:#191919;border-left-color:#9d2525;border-bottom-color:#444}
+.entry-copy .bullet{background:#211515;border-left-color:#9d2525}
+.media-grid figure{background:#171717;border-color:#4b4b4b}.media-grid img{background:#090909}.media-grid figcaption{color:#aaa}
+.license-line{color:#aaa}
+/* Minecraftia is reserved for interface labels/headings; article prose remains comfortable to read. */
+h1,h2,h3,.wiki-index h1,.entry-page h1,.entry-copy h2,.media-section h2,.tab,.terminal-bar,.database-launch,.home-metrics b,.home-directory h2,.entry-card b,.wiki-section-card strong,.category-filter,.settings-toggle,.settings-menu button,.settings-menu select{font-family:var(--font-minecraftia);font-weight:400;letter-spacing:0}
+.glitch-logo{font-family:var(--font-minecraftia);font-weight:400;-webkit-font-smoothing:none;font-smooth:never;text-rendering:geometricPrecision;font-synthesis:none}
+.home-logo{display:block;width:72px;height:72px;margin:0 0 8px;object-fit:contain;object-position:left center;image-rendering:pixelated;filter:drop-shadow(0 2px 3px #000)}
+.index-heading{display:flex;align-items:center;gap:14px}.index-heading .home-logo{margin:0;width:78px;height:78px}.entry-card[hidden]{display:none!important}
+@media(max-width:600px){h1{font-size:24px}.wiki-index h1,.entry-page h1{font-size:27px}}
+.result-count{margin:6px 0 12px;color:#aaa;font-size:11px}

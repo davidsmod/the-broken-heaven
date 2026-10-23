@@ -1,0 +1,5 @@
+/* Minecraftia is loaded from the public PrismarineJS repository through jsDelivr. */
+@font-face{font-family:Minecraftia;src:url('https://cdn.jsdelivr.net/gh/PrismarineJS/prismarine-web-client@master/assets/minecraftia.woff') format('woff');font-display:block;font-weight:400;font-style:normal}
+:root{--font-minecraftia:'Minecraftia','MinecraftiaRegular','Courier New',monospace}
+h1,h2,h3,.tab,.terminal-bar,.database-launch,.home-metrics b,.home-directory h2,.entry-card b,.wiki-section-card strong,.category-filter,.settings-toggle,.settings-menu button,.settings-menu select{font-family:var(--font-minecraftia);font-weight:400;letter-spacing:0;-webkit-font-smoothing:none;font-smooth:never;text-rendering:geometricPrecision;font-synthesis:none}
+.tab{font-size:10px}.database-launch span{font-size:11px}.home-metrics b{font-size:22px}.entry-card b{font-size:12px}.wiki-section-card strong{font-size:11px}
